@@ -1,6 +1,6 @@
 # Factory-Information-Systems-Course-Assignment
 Overview:
-Factory Information Systems (FIS) is utilized to help manufactures to optimize the production process
+ Factory Information Systems (FIS) is utilized to help manufactures to optimize the production process
 by analyzing the captured information from the entities within the system. This leads to decrease costs
 of production and increase the quality of products.
 
