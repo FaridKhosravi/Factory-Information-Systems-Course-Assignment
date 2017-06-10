@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FIS Course Assignment</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="stylesheets/grayscale.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<!-- Intro Header -->
+<header class="intro">
+    <div class="intro-body" ng-controller="appCltr">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="brand-heading">FIS COURSE ASSIGNMENT</h1>
+                </div>
+            </div>
+            <h1>Line Data</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="col-md-2 text-center" rowspan="2">OrderID</th>
+                    <th class="col-md-2 text-center" rowspan="2">PalletID</th>
+                    <th class="col-md-2 text-center" rowspan="2">Workstation Number</th>
+                    <th class="col-md-2 text-center" colspan="4">Workstation Zone</th>
+                    <th class="col-md-2 text-center" rowspan="2">Pallet Status</th>
+                </tr>
+                <tr>
+                    <th>Z1</th>
+                    <th>Z2</th>
+                    <th>Z3</th>
+                    <th>Z4</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in HTML_Data">
+                        <td>{{ x.order_id }}</td>
+                        <td>{{ x.pallet_id }}</td>
+                        <td>{{ x.ws_num }}</td>
+                        <td><img ng-src="{{ x.WS1 }}"/></td>
+                        <td><img ng-src="{{ x.WS2 }}"/></td>
+                        <td><img ng-src="{{ x.WS3 }}"/></td>
+                        <td><img ng-src="{{ x.WS4 }}"/></td>
+                        <td>{{ x.pallet_status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1>Order Data</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="col-md-1 text-center">OrderID</th>
+                    <th class="col-md-1 text-center">Order Quantity</th>
+                    <th class="col-md-1 text-center">Frame Type</th>
+                    <th class="col-md-1 text-center">Frame Color</th>
+                    <th class="col-md-1 text-center">Screen Type</th>
+                    <th class="col-md-1 text-center">Screen Color</th>
+                    <th class="col-md-1 text-center">Keyboard Type</th>
+                    <th class="col-md-1 text-center">Keyboard Color</th>
+                    <th class="col-md-1 text-center">Order Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="y in HTML_orderData">
+                    <td>{{ y.order_id }}</td>
+                    <td>{{ y.order_quantity }}</td>
+                    <td>{{ y.frame_type }}</td>
+                    <td>{{ y.frame_color }}</td>
+                    <td>{{ y.screen_type}}</td>
+                    <td>{{ y.screen_color}}</td>
+                    <td>{{ y.keyboard_type}}</td>
+                    <td>{{ y.keyboard_color}}</td>
+                    <td>{{ y.order_status}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <p>{{dataTest}}</p>
+        </div>
+    </div>
+</header>
+
+<!-- Footer -->
+<footer>
+    <div class="container text-center">
+        <p>Copyright &copy; Your Website 2016</p>
+    </div>
+</footer>
+
+<!--angular control-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+    var socket = io();
+    app.controller('appCltr', ['$scope', function($scope){
+        socket.on('data_port', function(data){
+            $scope.$apply(function(){
+                //creating an array of JSON with the pallet data received from pallet_info DB
+                var angularData = [];
+                for(var i=0; i<data.length; i++){
+                    var wsZone = data[i].ws_zone;
+                    var palletStat = data[i].pallet_status;
+                    switch (palletStat){
+                        case '0': {
+                            palletStat = "Process to be initiated";
+                            break;
+                        }
+                        case '1': {
+                            palletStat = "Paper Loaded";
+                            break;
+                        }
+                        case '2': {
+                            palletStat = "Frame Drawn";
+                            break;
+                        }
+                        case '3': {
+                            palletStat = "Frame & Screen Drawn";
+                            break;
+                        }
+                        case '4': {
+                            palletStat = "Mobile complete";
+                            break;
+                        }
+                        default: {
+                            palletStat = "Process to be initiated";
+                        }
+                    }
+                    var angularTempData = {"order_id":data[i].order_id, "pallet_id": data[i].pallet_id, "ws_num" : data[i].ws_num, "WS1" : "",
+                                    "WS2" : "", "WS3": "", "WS4": "", "pallet_status" : palletStat};
+
+                    switch (wsZone){
+                        case '1': {
+                            var WS1 = "img/checkmark_32.png";
+                            angularTempData = {"order_id":data[i].order_id, "pallet_id": data[i].pallet_id, "ws_num" : data[i].ws_num, "WS1" : WS1,
+                                "WS2" : "", "WS3": "", "WS4": "", "pallet_status" : palletStat};
+                            break;
+                        }
+                        case '2': {
+                            var WS2 = "img/checkmark_32.png";
+                            angularTempData = {"order_id":data[i].order_id, "pallet_id": data[i].pallet_id, "ws_num" : data[i].ws_num, "WS1" : "",
+                                "WS2" : WS2, "WS3": "", "WS4": "", "pallet_status" : palletStat};
+                            break;
+                        }
+                        case '3': {
+                            var WS3 = "img/checkmark_32.png";
+                            angularTempData = {"order_id":data[i].order_id, "pallet_id": data[i].pallet_id, "ws_num" : data[i].ws_num, "WS1" : "",
+                                "WS2" : "", "WS3": WS3, "WS4": "", "pallet_status" : palletStat};
+                            break;
+                        }
+                        case '4': {
+                            var WS4 = "img/checkmark_32.png";
+                            angularTempData = {"order_id":data[i].order_id, "pallet_id": data[i].pallet_id, "ws_num" : data[i].ws_num, "WS1" : "",
+                                "WS2" : "", "WS3": "", "WS4": WS4, "pallet_status" : palletStat};
+                            break;
+                        }
+                    }
+                    angularData.push(angularTempData);
+                    angularTempData = {};
+                }
+                $scope.HTML_Data = angularData; //connecting array of JSON with angular scope
+            });
+        });
+        socket.on('dataOrder_port', function(dataOrder){
+            $scope.$apply(function(){
+                $scope.HTML_orderData = dataOrder; //connecting array of JSON with angular scope
+                //console.log(dataOrder);
+            })
+        });
+    }]);
+</script>
+<!-- jQuery -->
+<script src="javascripts/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="javascripts/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+<!-- Theme JavaScript -->
+<script src="javascripts/grayscale.min.js"></script>
+
+</body>
+
+</html>

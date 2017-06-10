@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+
+    <style media="screen">
+
+
+
+        .entry:not(:first-of-type) {
+            margin-top: 10px;
+        }
+
+        .glyphicon {
+            font-size: 12px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+<body bgcolor="#E6E6FA">
+
+<div style="background-color: #5ca3f7 ;height:70px;text-align: center;">
+    <img class="jello animated" src="images/logo.png" alt="Logo"
+         style="width:400px;height:70px;float: left;margin-right: 9cm;">
+    <h3 style="font-family:Verdana;font-size:150%;color:#ffffff;height:100%;float:left;margin-left:auto;margin-top: 0.5em;margin-bottom: 0em;align:justify">
+        Facrory Information System Final Assignment</h3>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form action="/orders" method="post">
+            <!-- your table -->
+            <div id="orders">
+            </div>
+
+            <!--3 ta file-->
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div style="border-right: 3px solid saddlebrown" class="col-lg-4">
+
+                        <div style="margin-top: 9px" class="col-sm-3">
+                            <label for="frame type">Frame-type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="radio">
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline"><input type="checkbox" name="frame" value="1"><a><img
+                                            style="margin-left: 5px" src="images/frame1.jpg" height=40 width=40></a>Frame-1</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline"><input type="checkbox" name="frame" value="2"><a><img
+                                            style="margin-left: 5px" src="images/frame2.jpg" height=40 width=40></a>Frame-2</a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline"><input type="checkbox" name="frame" value="3"><a><img
+                                            style="margin-left: 5px" src="images/frame3.jpg" height=40 width=40></a>Frame-3</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 107px">
+                            <div style="margin-top: 5px" class="col-sm-3">
+                                <label for="frame color">Frame-color</label>
+                            </div>
+                            <div class="col-sm-9">
+                                <select name="framecolor" style="width: 89%;margin-left: 16px" class="form-control">
+                                    <option value="red">Red</option>
+                                    <option value="green">Green</option>
+                                    <option value="blue">Blue</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div style="border-right: 3px solid saddlebrown" class="col-lg-4">
+                        <div style="margin-top: 9px" class="col-sm-3">
+                            <label for="screen type">Screen-type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="radio">
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline"><input type="checkbox" name="screen"
+                                                                       value="1"><a><img
+                                            style="margin-left: 8px" src="images/screen1.jpg" height=40 width=40></a>Screen-1</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline"><input type="checkbox" name="screen"
+                                                                       value="2"><a><img
+                                            style="margin-left: 8px" src="images/screen2.jpg" height=40 width=40></a>Screen-2</a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline"><input type="checkbox" name="screen"
+                                                                       value="3"><a><img
+                                            style="margin-left: 8px" src="images/screen3.jpg" height=40 width=40></a>Screen-3</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 107px">
+
+                            <div style="margin-top: 5px" class="col-sm-3">
+                                <label for="screen color">Screen-color</label>
+                            </div>
+
+                            <div class="col-sm-9">
+                                <select name="screencolor" style="width: 91%; margin-left: 16px" class="form-control">
+                                    <option value="red">Red</option>
+                                    <option value="green">Green</option>
+                                    <option value="blue">Blue</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="col-lg-4">
+                        <div style="margin-top: 9px" class="col-sm-3">
+                            <label style="text-align: center" for="key type">Keyboard-type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="radio">
+                                <div class="col-sm-4">
+                                    <label style="text-align: center" class="checkbox-inline"><input type="checkbox"
+                                                                                                  name="key"
+                                                                                                  value="1"><a><img
+                                            style="margin-left: 6px" src="images/key1.jpg" height=40 width=40></a>Keyboard-1</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label style="text-align: center" class="checkbox-inline"><input type="checkbox"
+                                                                                                  name="key"
+                                                                                                  value="2"><a><img
+                                            style="margin-left: 6px" src="images/key2.jpg" height=40 width=40></a>Keyboard-2</a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label style="text-align: center" class="checkbox-inline"><input type="checkbox"
+                                                                                                  name="key"
+                                                                                                  value="3"><a><img
+                                            style="margin-left: 6px" src="images/key3.jpg" height=40 width=40></a>Keyboard-3</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 107px">
+                            <div style="margin-top: -4px" class="col-sm-3">
+                                <label style="text-align: center" for="key color">Keyboard-color</label>
+                            </div>
+                            <div class="col-sm-9">
+                                <select name="keycolor" style="width: 93%;margin-left: 16px" class="form-control">
+                                    <option value="red">Red</option>
+                                    <option value="green">Green</option>
+                                    <option value="blue">Blue</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div style="margin-top: 20px"></div>
+            <hr>
+
+            <!-- dokme add-->
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="col-sm-5">
+
+                        <div class="col-sm-5 nopadding">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="quantity" name="quantity"
+                                           placeholder="quantity" required>
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-success" type="button" onclick="orders();"><span
+                                                class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel-footer">
+                <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field</small>
+
+                <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field</small>
+            </div>
+
+            <div class="col-sm-5 col-sm-push-5">
+                <input type="submit" class="btn btn-warning col-lg-5">
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script type="text/javascript">
+    var room = 1;
+    function orders() {
+        room++;
+        var objTo = document.getElementById('orders')
+        var divtest = document.createElement("div");
+        divtest.setAttribute("class", "form-group removeclass" + room);
+        var rdiv = 'removeclass' + room;
+        divtest.innerHTML = '<div class="row">'+
+
+            '<div class="col-lg-12">'+
+
+            '<div style="border-right: 3px solid saddlebrown" class="col-lg-4">'+
+
+            '<div style="margin-top: 9px" class="col-sm-3">'+
+            '<label for="frame type">Frame-type</label>'+
+            '</div>'+
+            '<div class="col-sm-9">'+
+            '<div class="radio">'+
+            '<div class="col-sm-4">'+
+            '<label class="checkbox-inline"><input type="checkbox" name="frame" value="1"><a>'+
+            '<img style="margin-left: 5px" src="images/frame1.jpg" height=40 width=40></a>Frame-1</label>'+
+            '</div>'+
+            '<div class="col-sm-4">'+
+            '<label class="checkbox-inline"><input type="checkbox" name="frame" value="2"><a>'+
+            '<img style="margin-left: 5px" src="images/frame2.jpg" height=40 width=40></a>Frame-2</a>'+
+            '</label>'+
+            '</div>'+
+            '<div class="col-sm-4">'+
+            '<label class="checkbox-inline"><input type="checkbox" name="frame" value="3"><a>'+
+            '<img style="margin-left: 5px" src="images/frame3.jpg" height=40 width=40></a>Frame-3</a>'+
+            '</label>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '<div style="margin-top: 107px">'+
+            '<div style="margin-top: 5px" class="col-sm-3">'+
+            '<label for="frame color">Frame-color</label>'+
+            '</div>'+
+            '<div class="col-sm-9">'+
+            '<select name="framecolor" style="width: 89%;margin-left: 16px" class="form-control">'+
+            '<option value="red">Red</option>'+
+            '<option value="green">Green</option>'+
+            '<option value="blue">Blue</option>'+
+            '</select>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+
+            '<div style="border-right: 3px solid saddlebrown" class="col-lg-4">'+
+            '<div style="margin-top: 9px" class="col-sm-3">'+
+            '<label for="screen type">Screen-type</label>'+
+            '</div>'+
+            '<div class="col-sm-9">'+
+            '<div class="radio">'+
+            '<div class="col-sm-4">'+
+            '<label class="checkbox-inline"><input type="checkbox" name="screen"value="1"><a>'+
+            '<img style="margin-left: 8px" src="images/screen1.jpg" height=40 width=40></a>Screen-1</label>'+
+            '</div>'+
+            '<div class="col-sm-4">'+
+            '<label class="checkbox-inline"><input type="checkbox" name="screen"value="2"><a>'+
+            '<img style="margin-left: 8px" src="images/screen2.jpg" height=40 width=40></a>Screen-2</a>'+
+            '</label>'+
+            '</div>'+
+            '<div class="col-sm-4">'+
+            '<label class="checkbox-inline"><input type="checkbox" name="screen"value="3"><a>'+
+            '<img style="margin-left: 8px" src="images/screen3.jpg" height=40 width=40></a>Screen-3</a>'+
+            '</label>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+
+            '<div style="margin-top: 107px">'+
+
+            '<div style="margin-top: 5px" class="col-sm-3">'+
+            '<label for="screen color">Screen-color</label>'+
+            '</div>'+
+            '<div class="col-sm-9">'+
+            '<select name="screencolor" style="width: 91%; margin-left: 16px" class="form-control">'+
+            '<option value="red">Red</option>'+
+            '<option value="green">Green</option>'+
+            '<option value="blue">Blue</option>'+
+            '</select>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+
+            '<div class="col-lg-4">'+
+            '<div style="margin-top: 9px" class="col-sm-3">'+
+            '<label style="text-align: center" for="key type">Keyboard-type</label>'+
+            '</div>'+
+            '<div class="col-sm-9">'+
+            '<div class="radio">'+
+            '<div class="col-sm-4">'+
+            '<label style="text-align: center" class="checkbox-inline"><input type="checkbox"name="key"value="1"><a>'+
+            '<img style="margin-left: 6px" src="images/key1.jpg" height=40 width=40></a>Keyboard-1</label>'+
+            '</div>'+
+            '<div class="col-sm-4">'+
+            '<label style="text-align: center" class="checkbox-inline"><input type="checkbox"name="key"value="2"><a>'+
+            '<img style="margin-left: 6px" src="images/key2.jpg" height=40 width=40></a>Keyboard-2</a>'+
+            '</label>'+
+            '</div>'+
+            '<div class="col-sm-4">'+
+            '<label style="text-align: center" class="checkbox-inline"><input type="checkbox"name="key"value="3"><a>'+
+            '<img style="margin-left: 6px" src="images/key3.jpg" height=40 width=40></a>Keyboard-3</a>'+
+            '</label>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+
+            '<div style="margin-top: 107px">'+
+            '<div style="margin-top: -4px" class="col-sm-3">'+
+            '<label style="text-align: center" for="key color">Keyboard-color</label>'+
+            '</div>'+
+            '<div class="col-sm-9">'+
+            '<select name="keycolor" style="width: 93%;margin-left: 16px" class="form-control">'+
+            '<option value="red">Red</option>'+
+            '<option value="green">Green</option>'+
+            '<option value="blue">Blue</option>'+
+            '</select>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '<div style="margin-top: 20px"></div>'+
+            '<hr>'+
+
+            <!-- dokme add-->
+            '<div class="row">'+
+            '<div class="col-lg-12">'+
+            '<div class="col-sm-5">'+
+
+            '<div class="col-sm-5 nopadding">'+
+            '<div class="form-group">'+
+            '<div class="input-group">'+
+            '<input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" required>'+
+            '<div class="input-group-btn">'+
+            '<button class="btn btn-danger" type="button"  onclick="remove_orders('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+
+            '<div class="clear"></div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'
+                ;
+
+        objTo.appendChild(divtest)
+    }
+    function remove_orders(rid) {
+        $('.removeclass' + rid).remove();
+    }
+
+</script>
+
+</body>
+</html>
+
